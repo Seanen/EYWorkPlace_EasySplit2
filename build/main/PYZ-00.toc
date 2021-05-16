@@ -1,0 +1,1 @@
+('C:\\Users\\seanenhuang\\Documents\\EYWorkPlace\\build\\main\\PYZ-00.pyz', [])
