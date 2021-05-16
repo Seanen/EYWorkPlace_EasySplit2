@@ -10,7 +10,7 @@ https://pyinstaller.readthedocs.io/en/stable/runtime-information.html#using-file
 https://github.com/brentvollebregt/auto-py-to-exe
 
 """
-
+from sys import platform
 import csv
 import sys,os
 import string
@@ -26,13 +26,16 @@ frozen = 'not'
 
 # we are running in a bundle
 if getattr(sys, 'frozen', False):
-        frozen = 'ever so'
-        bundle_dir = sys._MEIPASS
-        # bundle_dir = path.abspath(os.path.dirname(sys.argv[0]))
+    frozen = 'ever so'
+    bundle_dir = sys._MEIPASS
+    # bundle_dir = path.abspath(os.path.dirname(sys.argv[0]))
 
 # we are running in a normal Python environment
 else:
+    if platform == 'darwin':
         bundle_dir = path.abspath(os.path.dirname(os.path.abspath(__file__)))
+    elif platform == "win32":
+
 
 path_to_dat = path.join(bundle_dir, 'Nodelist.csv')
 path_to_gephi = path.join(bundle_dir, 'Gephi_Network.gexf')
