@@ -27,15 +27,17 @@ frozen = 'not'
 # we are running in a bundle
 if getattr(sys, 'frozen', False):
     frozen = 'ever so'
-    bundle_dir = sys._MEIPASS
+    if platform == 'darwin':
+        bundle_dir = sys._MEIPASS
     # bundle_dir = path.abspath(os.path.dirname(sys.argv[0]))
-
+    elif platform == "win32":
+        bundle_dir = os.getcwd()
 # we are running in a normal Python environment
 else:
     if platform == 'darwin':
         bundle_dir = path.abspath(os.path.dirname(os.path.abspath(__file__)))
     elif platform == "win32":
-
+        bundle_dir = path.abspath(os.path.dirname(os.path.abspath(__file__)))
 
 path_to_dat = path.join(bundle_dir, 'Nodelist.csv')
 path_to_gephi = path.join(bundle_dir, 'Gephi_Network.gexf')
@@ -44,6 +46,7 @@ path_to_png = path.join(bundle_dir, 'network1.png')
 path_to_png2 = path.join(bundle_dir, 'network2.png')
 
 print('-------------------------------------')
+print(platform)
 print('we are', frozen, 'frozen')
 print('bundle dir is ', bundle_dir)
 print('sys.argv[0] is ', sys.argv[0])
@@ -186,9 +189,9 @@ def run_graph(G):
     plt.close()
 
     # Third draw
-    nx.draw_spring(G, with_labels=True)
-    plt.savefig(path_to_png2)
-    plt.close()
+    # nx.draw_spring(G, with_labels=True)
+    # plt.savefig(path_to_png2)
+    # plt.close()
 
 run_graph(G)
 
