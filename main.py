@@ -9,6 +9,11 @@ https://pyinstaller.readthedocs.io/en/stable/runtime-information.html#using-file
 
 https://github.com/brentvollebregt/auto-py-to-exe
 
+https://blog.csdn.net/BearStarX/article/details/81054134
+
+windows: pyinstaller -d all -F main.py
+mac: pyinstaller auto-py-to-exe
+
 """
 from sys import platform
 import csv
@@ -21,6 +26,7 @@ from operator import itemgetter
 import networkx as nx
 import matplotlib.pyplot as plt
 from networkx.algorithms.community.centrality import girvan_newman
+from PIL import Image
 
 frozen = 'not'
 
@@ -37,7 +43,7 @@ else:
     if platform == 'darwin':
         bundle_dir = path.abspath(os.path.dirname(os.path.abspath(__file__)))
     elif platform == "win32":
-        bundle_dir = path.abspath(os.path.dirname(os.path.abspath(__file__)))
+        bundle_dir = path.abspath(os.getcwd())
 
 path_to_dat = path.join(bundle_dir, 'Nodelist.csv')
 path_to_gephi = path.join(bundle_dir, 'Gephi_Network.gexf')

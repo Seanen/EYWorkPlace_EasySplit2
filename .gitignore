@@ -4,4 +4,6 @@ Thumbs.db
 __pycache__
 venv
 Temp
-
+dist
+output
+main.spec
