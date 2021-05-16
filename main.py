@@ -28,8 +28,8 @@ frozen = 'not'
 if getattr(sys, 'frozen', False):
     frozen = 'ever so'
     if platform == 'darwin':
-        bundle_dir = sys._MEIPASS
-    # bundle_dir = path.abspath(os.path.dirname(sys.argv[0]))
+        # bundle_dir = sys._MEIPASS
+        bundle_dir = path.abspath(os.path.dirname(sys.argv[0]))
     elif platform == "win32":
         bundle_dir = os.getcwd()
 # we are running in a normal Python environment
@@ -112,8 +112,8 @@ def run_networkx(G):
     density = nx.density(G)
     print("Network density:", density)
 
-    shortest = nx.shortest_path(G, source="Sean Huang", target="Gia")
-    print("Shortest path between Sean and Gia:", shortest)
+    # shortest = nx.shortest_path(G, source="Sean Huang", target="Gia")
+    # print("Shortest path between Sean and Gia:", shortest)
 
     components = nx.connected_components(G)
     largest_component = max(components, key=len)
